@@ -1,0 +1,444 @@
+*,*::after,*::before{
+    box-sizing:border-box;
+}
+/*custom porperties*/
+
+:root{
+    --ff-primary: 'Source Sans Pro', sans-serif;
+    --ff-secondary: 'Source Code Pro', monospace ;
+
+    --fw-regular:300;
+    --fw-bold:900;
+
+    --fs-h1:2.99rem;
+    --fs-h2:2.5rem;
+    --fs-h3:1.25rem;
+    --fs-body:1.1rem;
+
+    --clr-light:#fff;
+    --clr-dark:#303030;
+    --clr-accent:#27f5d2;
+    --bs: 0.45em 0.55em 0.75em rgba(0,0,0,0.55);
+}
+
+@media( min-width:800px ){
+    :root{
+        --fs-h1: 4.5rem;
+        --fs-h2: 3.49rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.3rem;
+    }
+}
+ 
+/*Basic Stylies*/
+
+html{
+     scroll-behavior:smooth;
+}
+
+body{
+
+    background:var(--clr-light);
+    color:var(--clr-dark);
+    font-family:var(--ff-primary);
+    font-size:var(--fs-body);
+    line-height:1.6;
+    margin:0
+
+}
+
+section{
+    padding:2rem 3rem;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+:focus{
+    outline: 2px solid var(--clr-accent);
+    outline-offset: 2px;
+}
+
+/*Typography*/
+
+h1,h2,h3{
+    line-height:1;
+    margin: 0;
+}
+
+h1{font-size:var(--fs-h1)};
+h2{font-size:var(--fs-h2)};
+h3{font-size:var(--fs-h3)};
+
+.section_title{
+    margin-bottom: .25em;
+}
+#section_title--introduction{
+    font-weight:var(--fw-regular);
+}
+#section_title--introduction strong{
+    display:block;
+}
+
+.section_subtitle{
+    margin: 0;
+    font-size: var(--fs-h3);
+}
+#section_subtitle--introduction,
+#section_subtitle--about-me
+{
+    background: var(--clr-accent);
+    font-family: var(--ff-secondary);
+    margin-bottom: 1rem;
+    padding: 1rem 1rem;
+}
+
+.intro__img{
+    box-shadow:var(--bs);
+}
+
+/*Header*/
+header{
+    display:flex;
+   justify-content: space-between;
+    padding: 1em;
+}
+
+.logo{
+    max-width: 180px;
+}
+.nav{
+    position:fixed;
+    background:var(--clr-dark);
+   color:var(--clr-light);
+   top:0;
+   left:0;
+   bottom:0;
+   right:0;
+   z-index: 100;
+
+   transform: translateX(100%);
+   transition: transform 200ms ease-in-out;
+
+}
+
+.nav_list{
+    display:flex;
+    flex-direction:column;
+    list-style:none;
+    justify-content: space-evenly;
+    align-items: center;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+.nav_item a{
+    color: var(--clr-light);
+    text-decoration: none;
+    font-size:2em;
+    font-weight:var(--fw-bold);
+}
+.nav_item a:hover{
+    color: var(--clr-accent);
+}
+.nav-toggle{
+    background:transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    height: 6em;
+
+}
+.hamburger{
+    display:block;
+    position:relative;
+}
+.hamburger,
+.hamburger::after,
+.hamburger::before{
+    background:var(--clr-accent); 
+    height: 5px;
+    width:2.65em;
+    border-radius: 3px;
+    transition: transfrom 100ms ease-in;
+   
+}
+.hamburger::after,
+.hamburger::before{
+    content: '';
+    position: absolute;
+    left:0;
+    right:0;
+}
+.hamburger::after{top:9px;}
+.hamburger::before{bottom: 9px;}
+
+.nav-open .nav{
+    transform: translateX(0);
+}
+.nav-open .hamburger{
+    transform:rotate(.625turn)
+}
+.nav-open .hamburger::before{
+    transform:rotate(90deg) translateX(14px);
+}
+.nav-open .hamburger::after{
+    opacity: 0;
+}
+
+@media (min-width: 550px) {
+    .introduction {
+        display: grid;
+        width: min-content;
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-template-areas: 
+            "img title"
+            "img subtitle";
+        grid-template-columns: min-content max-content;
+    }
+    
+    .intro__img {
+        grid-area:img;
+        min-width: 250px;
+        position:relative;
+        z-index:2;
+    }    
+
+    #section_subtitle--introduction{
+        align-self: start;
+        grid-column: -1 / 1;
+        grid-row: 2;
+        text-align: right;
+        position: relative;
+        left: -1.5em;
+        width: calc(100% + 1.5em);
+
+    }
+
+}
+
+            /*services section*/
+    .my-services{
+        background-color: var(--clr-dark);
+        color: var(--clr-light);
+        background-image: url(../images/what\ i\ do\ 2.png);
+        background-size: cover;
+        text-align:center;
+        
+    }
+
+#section_title--services{
+    color:var(--clr-accent);
+    position:relative;
+    font-size: var(--fs-h2);
+}
+#section_title--services::after{
+    content: '';
+    display: block;
+    width: 3em;
+    height: 3px;
+    margin: .5em auto 1em;
+    background: var(--clr-light);
+    opacity: 0.35;
+}
+.services{
+    margin-bottom: 3.5rem;
+}
+.service{
+    max-width: 500px;
+    margin: 1rem auto;
+}
+.btn{
+    display:inline-block;
+    color: var(--clr-light);
+    background: var(--clr-accent);
+    text-decoration:none;
+    padding:.5rem 1.2rem;
+    border-radius: .3rem;
+    font-size: 1em;
+    font-family:var(--ff-secondary);
+    transition: transfrom 200ms ease-in-out;
+    cursor:pointer;
+    font-weight:var(--fw-bold);
+    text-transform:uppercase;
+     
+}
+.btn:hover{
+  transform: scale(1.1);
+}
+@media(min-width: 800px){
+    .services{
+        display:flex;
+        max-width:1000px;
+        margin:0 auto;
+    }
+
+    .logo{
+        max-width:240px;
+    }
+    .nav-toggle{
+        background:transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+        height: 8em;
+}
+}
+ /*About me section*/
+
+ .about-me{
+     max-width:1000px;
+     margin:0 auto;
+ }
+ .about-me_img{
+     box-shadow: var(--bs);
+     
+ }
+
+ 
+ @media(min-width:550px){
+     .about-me{
+         display: grid;
+         grid-template-columns: 1fr 250px;
+         grid-template-areas: 
+              "title img"
+              "subtitle img"
+              "text img" ;
+      } 
+      
+     
+     #section_title--about-me{
+         grid-area:title;
+         font-size: var(--fs-h2);
+     }
+      #section_subtitle--about-me{
+        grid-column: 1/-1;
+        grid-row:2;
+        position:relative;
+        left:-2em;
+        width:calc(100% + 4em);
+        padding-left: 2em;
+        padding-right: calc(250px + 3em);
+      }
+     /* @media(min-width:550px){
+        #section_subtitle--about-me{
+            grid-column: 1/-1;
+            grid-row:2;
+            position:relative;
+            left:-2em;
+            width:calc(100% + 4em);
+            padding-left: 2em;
+            padding-right: calc(230px + 3em);}*/
+    .about-me_img{
+        grid-area:img;
+        position:relative;
+        z-index:2;
+        height:auto
+    }
+}
+    .my-projects{
+        background-color:var(--clr-dark);
+        color:var(--clr-light);
+        text-align: center;
+    }
+    #section_title--my-projects{
+        color:var(--clr-accent);
+        font-size: var(--fs-h2);
+        font-weight: var(--fw-bold);
+        margin-bottom: .3em;
+    
+    }
+    #section_subtitle--my-projects{
+        margin-bottom: 2em;
+    }
+   
+    .projects{
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(256px, 1fr));
+      
+    }
+ 
+ .project_image{
+    transition: 
+    transform 500ms cubic-bezier(.5, 0, .5, 1),
+    opacity 250ms linear;
+    
+ }
+ .project_image:hover, .project_image,.project_item:focus{
+     transform: scale(1);
+ }
+
+ /*Footer*/
+
+ .footer{
+     background: #111;
+     color: var(--clr-accent);
+     text-align:center;
+     padding: 1em 0;
+ }
+ .footer a{
+     color:var(--clr-accent);
+     text-decoration: none;
+     
+ }
+ .social_link{
+     text-decoration:none;
+
+
+ }
+ .footer_link:hover{
+     text-decoration: underline;}
+     .footer_link{
+     font-size: .9em;
+     font-weight: var(--fw-bold);
+    
+ }
+.social_link:hover,
+.footer_link:hover{
+    opacity: .7;
+}
+.social_list{
+  font-size: 1em;
+  list-style: none;
+  margin: 1.2em 0 .7em -21px;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.social_item{
+    padding:0 .7em;
+}
+
+@media(min-width:550px){
+    .footer_link{
+        font-size: var(--fs-h3);
+        font-weight: var(--fw-bold);
+        margin: 1em 0;
+    }
+    .social_list{
+          list-style: none;
+    margin: 1.2em 0em .7em -42px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: 2em;
+    }
+}
+
+/* Individual project Items*/
+
+.project-bahamas{
+    padding: 2em 2em;
+    margin: 0 auto;
+    
+}
+.project-bahamas p{
+    margin-left: auto;
+    margin-right: auto;
+    max-width:870px;
+}
+.bahamas_img{
+    margin: auto;
+}
